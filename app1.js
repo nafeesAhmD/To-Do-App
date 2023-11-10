@@ -1,11 +1,25 @@
 import { auth } from "./config.js";
-import { showEmail } from "./signin.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
 const input = document.querySelector('#input');
 const btn = document.querySelector('#btn');
 const getul = document.querySelector('#getul')
 const showUser = document.querySelector('#showUser')
 
-showUser.innerHTML = showEmail
+
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+     
+      const uid = user.email;
+      showUser.textContent = uid
+      console.log(uid)
+      // ...
+    } else {
+      // User is signed out
+      // ...
+    }
+  });
+
+// showUser.innerHTML = showEmail
 
 btn.addEventListener('click', () => {
     if(input.value == ""){
@@ -22,7 +36,7 @@ btn.addEventListener('click', () => {
         function remove(){
             li.remove()
         }
-
+       
     }
     input.value = ""
 })

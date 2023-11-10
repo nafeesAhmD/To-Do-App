@@ -18,7 +18,14 @@ body{
     background-color: burlywood;
     padding: 1rem 1rem;
     border-radius: 0.5rem;
+    position: relative;
 
+}
+.container #showUser{
+    position: absolute;
+    top: 5%;
+    right: 30px;
+    color: #4285f4;
 }
 .main {
     display: flex;
